@@ -8,7 +8,9 @@ import { NotFoundComponent } from './auth/not-found/not-found.component';
 import {LoginComponent} from "./auth/login/login.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatSidenavModule} from "@angular/material/sidenav";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {CatchingMessageInterceptor} from "./core/interceptor/catching-message.interceptor";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -23,9 +25,16 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatSidenavModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CatchingMessageInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

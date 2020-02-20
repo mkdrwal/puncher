@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   login() {
     console.log(this.envService.getApiUrl('login'));
 
-    this.httpClient.post(this.envService.getApiUrl('login'), {"username": "admin", "password": "admin"}).subscribe(value => {
+    this.httpClient.post(this.envService.getApiUrl('login'), this.loginForm.getRawValue()).subscribe(value => {
       console.log(value)
     })
   }

@@ -2,6 +2,8 @@ package dev.mateuszkowalczyk.puncher.auth.controller;
 
 import dev.mateuszkowalczyk.puncher.auth.model.LoginData;
 import dev.mateuszkowalczyk.puncher.auth.model.LoginToken;
+import dev.mateuszkowalczyk.puncher.response.InvalidDataResponse;
+import dev.mateuszkowalczyk.puncher.response.Response;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +14,7 @@ public class AuthController {
     @ResponseBody
     @RequestMapping(value = "/login")
     @CrossOrigin
-    public LoginToken login(@RequestBody LoginData data, HttpServletResponse response) {
+    public Response login(@RequestBody LoginData data, HttpServletResponse response) {
 
         if (
                 data.getUsername() != null &&
@@ -23,11 +25,12 @@ public class AuthController {
             LoginToken token = new LoginToken();
             token.setUsername("admin");
             token.setToken("aaaaa");
+            token.setMessage("Successful");
 
             return token;
         }
         response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-        return null;
+        return new InvalidDataResponse("Invalid login data");
     }
 
 
