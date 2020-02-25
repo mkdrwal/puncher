@@ -1,7 +1,7 @@
-package dev.mateuszkowalczyk.puncher.auth.controller;
+package dev.mateuszkowalczyk.puncher.controller;
 
-import dev.mateuszkowalczyk.puncher.auth.model.LoginData;
-import dev.mateuszkowalczyk.puncher.auth.model.LoginToken;
+import dev.mateuszkowalczyk.puncher.model.LoginData;
+import dev.mateuszkowalczyk.puncher.model.LoginToken;
 import dev.mateuszkowalczyk.puncher.response.InvalidDataResponse;
 import dev.mateuszkowalczyk.puncher.response.Response;
 import org.springframework.web.bind.annotation.*;

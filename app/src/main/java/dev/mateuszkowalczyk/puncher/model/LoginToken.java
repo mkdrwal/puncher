@@ -1,4 +1,4 @@
-package dev.mateuszkowalczyk.puncher.auth.model;
+package dev.mateuszkowalczyk.puncher.model;
 
 import dev.mateuszkowalczyk.puncher.response.Response;
 

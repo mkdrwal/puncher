@@ -1,4 +1,4 @@
-package dev.mateuszkowalczyk.puncher.auth.model;
+package dev.mateuszkowalczyk.puncher.model;
 
 public class LoginData {
     private String username;
