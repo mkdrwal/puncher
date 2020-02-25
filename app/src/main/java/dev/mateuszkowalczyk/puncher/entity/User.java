@@ -1,4 +1,6 @@
-package dev.mateuszkowalczyk.puncher.model;
+package dev.mateuszkowalczyk.puncher.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -10,8 +12,11 @@ public class User extends AuditModel {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @Column
     private String username;
 
+    @Column
+    @JsonIgnore
     private String password;
 
     public User() {}

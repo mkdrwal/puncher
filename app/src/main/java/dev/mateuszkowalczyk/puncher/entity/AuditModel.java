@@ -1,6 +1,5 @@
-package dev.mateuszkowalczyk.puncher.model;
+package dev.mateuszkowalczyk.puncher.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
