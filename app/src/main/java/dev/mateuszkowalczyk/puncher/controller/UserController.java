@@ -8,6 +8,9 @@ import dev.mateuszkowalczyk.puncher.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Max;
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -20,12 +23,18 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping(value = "/list")
+    public List<User> list() {
+        return this.userService.getList();
+    }
+
     @ResponseBody
     @PostMapping(value = "/create")
-    public Response createUser(@RequestBody UserDTO user) {
+    public Response create(@RequestBody UserDTO user) {
         this.userService.create(user);
 
         return new SuccessfulCreateResponse();
     }
+
 
 }

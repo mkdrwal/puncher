@@ -7,6 +7,8 @@ import dev.mateuszkowalczyk.puncher.security.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -29,5 +31,9 @@ public class UserService {
 
         this.userRepository.save(user);
         return user;
+    }
+
+    public List<User> getList() {
+        return this.userRepository.findAll();
     }
 }
