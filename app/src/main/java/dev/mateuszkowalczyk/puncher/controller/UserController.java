@@ -5,6 +5,7 @@ import dev.mateuszkowalczyk.puncher.model.UserDTO;
 import dev.mateuszkowalczyk.puncher.response.CannotFindResponse;
 import dev.mateuszkowalczyk.puncher.response.Response;
 import dev.mateuszkowalczyk.puncher.response.SuccessfulCreateResponse;
+import dev.mateuszkowalczyk.puncher.response.SuccessfulUpdateResponse;
 import dev.mateuszkowalczyk.puncher.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +43,13 @@ public class UserController {
         this.userService.create(user);
 
         return new SuccessfulCreateResponse();
+    }
+
+    @PutMapping(value = "/{id}")
+    public Response update(@PathVariable Long id, @RequestBody UserDTO user) {
+        this.userService.update(id, user);
+
+        return new SuccessfulUpdateResponse();
     }
 
     @ExceptionHandler(NoSuchElementException.class)

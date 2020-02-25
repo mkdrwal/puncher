@@ -31,6 +31,7 @@ public class UserService {
         user.setPassword(this.passwordEncoder.encode(userDTO.getPlainPassword()));
 
         this.userRepository.save(user);
+        this.userRepository.flush();
         return user;
     }
 
@@ -41,5 +42,17 @@ public class UserService {
     public User get(Long id) {
         var user = this.userRepository.findById(id);
         return user.get();
+    }
+
+    public void update(Long id,UserDTO userDTO) {
+        User user = this.userRepository.findById(id).get();
+
+        user.setUsername(userDTO.getUsername());
+
+        if(userDTO.getPlainPassword() != null) {
+            user.setPassword(this.passwordEncoder.encode(userDTO.getPlainPassword()));
+        }
+
+        this.userRepository.saveAndFlush(user);
     }
 }
