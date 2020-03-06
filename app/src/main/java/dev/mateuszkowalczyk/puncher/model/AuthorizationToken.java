@@ -4,14 +4,14 @@ import dev.mateuszkowalczyk.puncher.response.Response;
 
 import java.util.ArrayList;
 
-public class LoginToken extends Response {
+public class AuthorizationToken extends Response {
     private String username;
     private ArrayList<String> roles = new ArrayList<>();
     private String token;
 
-    public LoginToken() {}
+    public AuthorizationToken() {}
 
-    public LoginToken(String username, ArrayList<String> roles, String token) {
+    public AuthorizationToken(String username, ArrayList<String> roles, String token) {
         this.username = username;
         this.roles = roles;
         this.token = token;

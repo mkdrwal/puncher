@@ -3,12 +3,11 @@ package dev.mateuszkowalczyk.puncher.service;
 import dev.mateuszkowalczyk.puncher.entity.User;
 import dev.mateuszkowalczyk.puncher.model.UserDTO;
 import dev.mateuszkowalczyk.puncher.repository.UserRepository;
-import dev.mateuszkowalczyk.puncher.security.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
