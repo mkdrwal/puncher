@@ -4,6 +4,7 @@ import {EnvService} from "./env.service";
 import {HttpClient} from "@angular/common/http";
 import {UserData} from "../interface/user-data";
 import {throwError} from "rxjs";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class AuthService {
   constructor(
     private userStorageService: UserStorageService,
     private envService: EnvService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router
   ) { }
 
 
@@ -31,7 +33,7 @@ export class AuthService {
   public register(data: {username: string; password: string; email: string}) {
     this.httpClient.post(this.envService.getApiUrl('register'), data).subscribe(
       (value) => {
-        this.userStorageService.save((<UserData>value));
+        this.router.navigateByUrl("/login");
       },
       (error) => {
         console.log(error);
