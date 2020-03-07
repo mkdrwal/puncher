@@ -5,8 +5,6 @@ import dev.mateuszkowalczyk.puncher.model.AuthorizationToken;
 import dev.mateuszkowalczyk.puncher.response.InvalidDataResponse;
 import dev.mateuszkowalczyk.puncher.response.Response;
 import dev.mateuszkowalczyk.puncher.security.JwtTokenProvider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,7 +28,6 @@ public class AuthController {
 
     @ResponseBody
     @PostMapping(value = "/login")
-    @CrossOrigin
     public Response login(@RequestBody LoginData data, HttpServletResponse response) {
         try {
             String username = data.getUsername();
