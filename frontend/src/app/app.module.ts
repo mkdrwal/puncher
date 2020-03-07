@@ -13,13 +13,15 @@ import {CatchingMessageInterceptor} from "./core/interceptor/catching-message.in
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {AuthenticationInterceptor} from "./core/interceptor/authentication.interceptor";
 import {MainInterceptor} from "./core/interceptor/main.interceptor";
+import { RegisterComponent } from './layout/register/register.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
