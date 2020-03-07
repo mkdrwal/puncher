@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {EnvService} from "../../core/service/env.service";
 import {HttpClient} from "@angular/common/http";
+import {AuthService} from "../../core/service/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -15,18 +16,17 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
-    private envService: EnvService,
-    private httpClient: HttpClient
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
   }
 
   login() {
-    console.log(this.envService.getApiUrl('login'));
-
-    this.httpClient.post(this.envService.getApiUrl('login'), this.loginForm.getRawValue()).subscribe(value => {
-      console.log(value)
-    })
+    try {
+      this.authService.login(this.loginForm.getRawValue());
+    } catch (e) {
+      console.error(e);
+    }
   }
 }

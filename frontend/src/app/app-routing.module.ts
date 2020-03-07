@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {LoginComponent} from "./auth/login/login.component";
-import {NotFoundComponent} from "./auth/not-found/not-found.component";
+import {LoginComponent} from "./layout/login/login.component";
+import {NotFoundComponent} from "./layout/not-found/not-found.component";
 
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
   {
     path: '404',
