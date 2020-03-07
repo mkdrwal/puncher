@@ -2,9 +2,12 @@ package dev.mateuszkowalczyk.puncher.controller;
 
 import dev.mateuszkowalczyk.puncher.model.LoginData;
 import dev.mateuszkowalczyk.puncher.model.AuthorizationToken;
+import dev.mateuszkowalczyk.puncher.model.RegisterData;
 import dev.mateuszkowalczyk.puncher.response.InvalidDataResponse;
 import dev.mateuszkowalczyk.puncher.response.Response;
+import dev.mateuszkowalczyk.puncher.response.SuccessfulCreateResponse;
 import dev.mateuszkowalczyk.puncher.security.JwtTokenProvider;
+import dev.mateuszkowalczyk.puncher.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,11 +22,13 @@ import java.util.ArrayList;
 public class AuthController {
     private AuthenticationManager authenticationManager;
     private JwtTokenProvider jwtTokenProvider;
+    private AuthService authService;
 
     @Autowired
-    public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider) {
+    public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, AuthService authService) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
+        this.authService = authService;
     }
 
     @ResponseBody
@@ -48,5 +53,10 @@ public class AuthController {
         }
     }
 
+    @PostMapping(value = "/register")
+    public Response register(@RequestBody RegisterData data) {
+        this.authService.register(data);
 
+        return new SuccessfulCreateResponse("Created succesful now can you login");
+    }
 }

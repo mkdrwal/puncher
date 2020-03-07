@@ -10,10 +10,19 @@ public class UserDTO {
 
     @NotBlank
     @Size(min = 5)
-    private String plainPassword;
+    private String password;
+
+    @NotBlank
+    private String email;
 
     public UserDTO() {
 
+    }
+
+    public UserDTO(RegisterData registerData) {
+        this.username = registerData.getUsername();
+        this.password = registerData.getPassword();
+        this.email = registerData.getEmail();
     }
 
     public String getUsername() {
@@ -24,11 +33,19 @@ public class UserDTO {
         this.username = username;
     }
 
-    public String getPlainPassword() {
-        return plainPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPlainPassword(String plainPassword) {
-        this.plainPassword = plainPassword;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

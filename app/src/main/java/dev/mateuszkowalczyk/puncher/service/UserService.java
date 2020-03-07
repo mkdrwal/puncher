@@ -27,7 +27,8 @@ public class UserService {
         User user = new User();
 
         user.setUsername(userDTO.getUsername());
-        user.setPassword(this.passwordEncoder.encode(userDTO.getPlainPassword()));
+        user.setPassword(this.passwordEncoder.encode(userDTO.getPassword()));
+        user.setEmail(userDTO.getEmail());
 
         this.userRepository.save(user);
         this.userRepository.flush();
@@ -48,8 +49,8 @@ public class UserService {
 
         user.setUsername(userDTO.getUsername());
 
-        if(userDTO.getPlainPassword() != null) {
-            user.setPassword(this.passwordEncoder.encode(userDTO.getPlainPassword()));
+        if(userDTO.getPassword() != null) {
+            user.setPassword(this.passwordEncoder.encode(userDTO.getPassword()));
         }
 
         this.userRepository.saveAndFlush(user);

@@ -1,36 +1,20 @@
-package dev.mateuszkowalczyk.puncher.entity;
+package dev.mateuszkowalczyk.puncher.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.*;
+import javax.validation.constraints.Email;
 
-@Entity
-@Table(name = "users")
-public class User extends AuditModel {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
-
-    @Column
+public class RegisterData {
+    @Email
     private String email;
 
-    @Column(unique = true)
+    @Length(min = 5, max = 100, message = "Minimal length is 5 and max 100")
     private String username;
 
-    @Column
-    @JsonIgnore
+    @Length(min = 5, message = "Password cannot be shorter than 5 chars")
     private String password;
 
-    public User() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public RegisterData() {}
 
     public String getEmail() {
         return email;
