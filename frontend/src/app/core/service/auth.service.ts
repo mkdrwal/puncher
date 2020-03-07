@@ -26,6 +26,17 @@ export class AuthService {
         console.log(error);
         return throwError("Invalid data");
       }
-    )
+    );
+  }
+  public register(data: {username: string; password: string; email: string}) {
+    this.httpClient.post(this.envService.getApiUrl('register'), data).subscribe(
+      (value) => {
+        this.userStorageService.save((<UserData>value));
+      },
+      (error) => {
+        console.log(error);
+        return throwError("Invalid data");
+      }
+    );
   }
 }
