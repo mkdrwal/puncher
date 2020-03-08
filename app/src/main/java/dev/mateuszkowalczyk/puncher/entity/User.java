@@ -24,6 +24,17 @@ public class User extends AuditModel {
 
     public User() {}
 
+    /**
+     * @param username
+     * @param email
+     * @param password
+     */
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     public Long getId() {
         return id;
     }

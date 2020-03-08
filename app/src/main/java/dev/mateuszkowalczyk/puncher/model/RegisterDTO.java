@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 
-public class RegisterData {
+public class RegisterDTO {
     @Email
     private String email;
 
@@ -14,7 +14,7 @@ public class RegisterData {
     @Length(min = 5, message = "Password cannot be shorter than 5 chars")
     private String password;
 
-    public RegisterData() {}
+    public RegisterDTO() {}
 
     public String getEmail() {
         return email;

@@ -19,7 +19,7 @@ public class UserDTO {
 
     }
 
-    public UserDTO(RegisterData registerData) {
+    public UserDTO(RegisterDTO registerData) {
         this.username = registerData.getUsername();
         this.password = registerData.getPassword();
         this.email = registerData.getEmail();

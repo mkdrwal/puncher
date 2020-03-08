@@ -1,6 +1,7 @@
 package dev.mateuszkowalczyk.puncher.service;
 
-import dev.mateuszkowalczyk.puncher.model.RegisterData;
+import dev.mateuszkowalczyk.puncher.entity.User;
+import dev.mateuszkowalczyk.puncher.model.RegisterDTO;
 import dev.mateuszkowalczyk.puncher.model.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,13 @@ public class AuthService {
         this.userService = userService;
     }
 
-    public void register(RegisterData data) {
-        UserDTO userDTO = new UserDTO(data);
+    public User register(RegisterDTO data) {
+        UserDTO userDTO = getUserDTO(data);
 
-        this.userService.create(userDTO);
+        return this.userService.create(userDTO);
+    }
+
+    private UserDTO getUserDTO(RegisterDTO data) {
+        return new UserDTO(data);
     }
 }

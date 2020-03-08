@@ -2,7 +2,7 @@ package dev.mateuszkowalczyk.puncher.controller;
 
 import dev.mateuszkowalczyk.puncher.model.LoginData;
 import dev.mateuszkowalczyk.puncher.model.AuthorizationToken;
-import dev.mateuszkowalczyk.puncher.model.RegisterData;
+import dev.mateuszkowalczyk.puncher.model.RegisterDTO;
 import dev.mateuszkowalczyk.puncher.response.InvalidDataResponse;
 import dev.mateuszkowalczyk.puncher.response.Response;
 import dev.mateuszkowalczyk.puncher.response.SuccessfulCreateResponse;
@@ -54,7 +54,7 @@ public class AuthController {
     }
 
     @PostMapping(value = "/register")
-    public Response register(@RequestBody RegisterData data) {
+    public Response register(@RequestBody RegisterDTO data) {
         this.authService.register(data);
 
         return new SuccessfulCreateResponse("Created succesful now can you login");
